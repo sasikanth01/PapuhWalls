@@ -60,5 +60,8 @@ dependencies {
     compile 'com.jpardogo.googleprogressbar:library:1.2.0'
 //License Dialog Library
     compile('de.psdev.licensesdialog:licensesdialog:1.7.0')
+// Color Changer Library
     compile 'com.github.yukuku:ambilwarna:2.0.1'
+// Pinch to Zoom Library
+    compile 'com.commit451:PhotoView:1.2.4'
 }
