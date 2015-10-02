@@ -9,20 +9,20 @@
 
     <string-array name="v2">
         <item>V2.0</item>
-        <item>Initial Release</item>
+        <item>@string/v2_line1</item>
     </string-array>
 
     <string-array name="v21">
         <item>V2.0.1</item>
-        <item>- Fixed FC with "clear cache" menu</item>
-        <item>- Fixed Muzei navbar not being tinted</item>
+        <item>@string/v21_line1</item>
+        <item>@string/v21_line2</item>
     </string-array>
 
     <string-array name="v22">
         <item>V2.0.2</item>
-        <item>- Improvements to the wall fragments</item>
-        <item>- Remove header\'s profile selection tab</item>
-        <item>- 20 new wallpapers</item>
+        <item>@string/v22_line1</item>
+        <item>@string/v22_line2</item>
+        <item>@string/v22_line3</item>
     </string-array>
 
 </resources>

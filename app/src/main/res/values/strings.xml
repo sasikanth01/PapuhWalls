@@ -111,6 +111,17 @@
     <string name="theme_fab_background">Background color</string>
     <string name="theme_fab_background_summary">Change color of the background when FAB is expanded</string>
 
+    <!-- Changelog -->
+    <!-- Initial Release -->
+    <string name="v2_line1">Initial Release</string>
+    <!-- Version 2.0.1 -->
+    <string name="v21_line1">- Fixed FC with "clear cache" menu</string>
+    <string name="v21_line2">- Fixed Muzei navbar not being tinted</string>
+    <!-- Version 2.0.2 -->
+    <string name="v22_line1">- Improvements to the wall fragments</string>
+    <string name="v22_line2">- Remove header\'s profile selection tab</string>
+    <string name="v22_line3">- 20 new wallpapers</string>
+
 
     <!---DO NOT TRANSLATE-->
     <!---DO NOT TRANSLATE-->
