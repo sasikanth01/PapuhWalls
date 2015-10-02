@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Display;
 import android.view.View;
@@ -26,11 +28,17 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.mrengineer13.snackbar.SnackBar;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.ref.WeakReference;
+
+import okio.BufferedSink;
+import okio.Okio;
 
 
 public class WallsFragment extends ActionBarActivity {
@@ -90,17 +98,83 @@ public class WallsFragment extends ActionBarActivity {
 
         fabBg = findViewById(R.id.fabBg);
 
-        ImageView image = (ImageView) findViewById(R.id.bigwall);
+        final ImageView image = (ImageView) findViewById(R.id.bigwall);
         wall = getIntent().getStringExtra("wall");
         destWallFile = new File(saveWallLocation + "/" + picName + convertWallName(wall) + ".png");
 
         final Point displySize = getDisplaySize(getWindowManager().getDefaultDisplay());
         final int size = (int) Math.ceil(Math.sqrt(displySize.x * displySize.y));
+
+        /*
         Picasso.with(this)
                 .load(wall)
-                .resize(size, size)
-                .centerCrop()
+               // .resize(size, size)
+               // .fit()
+               // .centerCrop()
                 .into(image);
+*/
+        new DownloadBitmap(context, wall, destWallFile, new Callback<Uri>() {
+            @Override
+            public void callback(Uri uri) {
+
+                Log.d("TEST", "TEST");
+
+                if (uri == null) {
+                    Log.e("Bitmap", "is null");
+                    return;
+                }
+
+                BitmapFactory.Options options = new BitmapFactory.Options();
+              //  options.inJustDecodeBounds = true;
+
+               Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath(), options);
+/*
+                if (bitmap.getHeight() > 4096 || bitmap.getWidth() > 4096) {
+                    Log.w("Error", "Bitmap too big");
+
+                    bitmap.recycle();
+
+                    new SnackBar.Builder(context)
+                            .withMessage("Image too big")
+                            .withActionMessageId(R.string.ok)
+                            .withStyle(SnackBar.Style.ALERT)
+                            .withDuration(SnackBar.SHORT_SNACK)
+                            .show();
+
+                    return;
+                }
+*/
+
+                //If bitmap height is bigger that device's - resize it
+
+                int height = bitmap.getHeight();
+                int width = bitmap.getWidth();
+
+                //Get imageview height
+                int imageViewHeight = image.getHeight();
+
+                if (height > imageViewHeight) {
+
+                    float resizeRatio = ((float) imageViewHeight)/height;
+
+                    Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, (int) (width * resizeRatio), imageViewHeight, false);
+
+                    bitmap.recycle();
+                   // bitmap = newBitmap;
+
+                    image.setImageBitmap(newBitmap);
+
+                } else {
+                    image.setImageURI(uri);
+                }
+
+
+
+                // Picasso.with(context).load(uri).into(image);
+
+            }
+        }).execute();
+
 
         final FloatingActionsMenu wallsFab = (FloatingActionsMenu) findViewById(R.id.wall_actions);
         wallsFab.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
@@ -122,7 +196,7 @@ public class WallsFragment extends ActionBarActivity {
         setWall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+/*
                 new DownloadBitmap(context, wall, destWallFile, new Callback<Pair<Uri, Bitmap>>() {
                     @Override
                     public void callback(Pair<Uri, Bitmap> object) {
@@ -142,7 +216,7 @@ public class WallsFragment extends ActionBarActivity {
                         }
                     }
                 }).execute();
-
+*/
             }
         });
 
@@ -153,6 +227,7 @@ public class WallsFragment extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
+                /*
                 new DownloadBitmap(context, wall, destWallFile, new Callback<Pair<Uri, Bitmap>>() {
                     @Override
                     public void callback(Pair<Uri, Bitmap> object) {
@@ -173,7 +248,7 @@ public class WallsFragment extends ActionBarActivity {
 
                     }
                 }).execute();
-
+*/
             }
         });
 
@@ -184,11 +259,11 @@ public class WallsFragment extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                new DownloadBitmap(context, wall, destWallFile, new Callback<Pair<Uri, Bitmap>>() {
+                new DownloadBitmap(context, wall, destWallFile, new Callback<Uri>() {
                     @Override
-                    public void callback(Pair<Uri, Bitmap> object) {
+                    public void callback(Uri uri) {
                         Intent setWall = new Intent(Intent.ACTION_ATTACH_DATA);
-                        setWall.setDataAndType(object.first, "image/*");
+                        setWall.setDataAndType(uri, "image/*");
                         setWall.putExtra("png", "image/*");
                         startActivityForResult(Intent.createChooser(setWall, getString(R.string.set_as)), 1);
                     }
@@ -204,11 +279,11 @@ public class WallsFragment extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                new DownloadBitmap(context, wall, destWallFile, new Callback<Pair<Uri, Bitmap>>() {
+                new DownloadBitmap(context, wall, destWallFile, new Callback<Uri>() {
                     @Override
-                    public void callback(Pair<Uri, Bitmap> object) {
+                    public void callback(Uri uri) {
                         Intent editWall = new Intent(Intent.ACTION_EDIT);
-                        editWall.setDataAndType(object.first, "image/*");
+                        editWall.setDataAndType(uri, "image/*");
                         editWall.putExtra("png", "image/*");
                         startActivityForResult(Intent.createChooser(editWall, getString(R.string.edit_wall)), 1);
                     }
@@ -224,12 +299,12 @@ public class WallsFragment extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                new DownloadBitmap(context, wall, destWallFile, new Callback<Pair<Uri, Bitmap>>() {
+                new DownloadBitmap(context, wall, destWallFile, new Callback<Uri>() {
                     @Override
-                    public void callback(Pair<Uri, Bitmap> object) {
+                    public void callback(Uri uri) {
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("image/*");
-                        shareIntent.putExtra(Intent.EXTRA_STREAM, object.first);
+                        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                         WallsFragment.this.startActivityForResult(Intent.createChooser(shareIntent, "Share Via"), ACTIVITY_SHARE);
                     }
                 }).execute();
@@ -294,14 +369,14 @@ public class WallsFragment extends ActionBarActivity {
                         putExtras(args));
     }
 
-    private static class DownloadBitmap extends AsyncTask<Void, Void, Pair<Uri, Bitmap>> {
+    private static class DownloadBitmap extends AsyncTask<Void, Void, Uri> {
 
         private WeakReference<Activity> activity;
         private String url;
         private File dest;
-        private Callback<Pair<Uri, Bitmap>> callback;
+        private Callback<Uri> callback;
 
-        public DownloadBitmap(Activity activity, String url, File dest, Callback<Pair<Uri, Bitmap>> callback) {
+        public DownloadBitmap(Activity activity, String url, File dest, Callback<Uri> callback) {
             this.url = url;
             this.dest = dest;
             this.activity = new WeakReference<>(activity);
@@ -319,13 +394,13 @@ public class WallsFragment extends ActionBarActivity {
         }
 
         @Override
-        protected Pair<Uri, Bitmap> doInBackground(Void... params) {
+        protected Uri doInBackground(Void... params) {
 
             Bitmap bitmap = null;
             Uri uri = null;
 
             try {
-
+/*
                 bitmap = Picasso.with(activity.get()).load(url).get();
 
                 dest.getParentFile().mkdirs();
@@ -337,6 +412,22 @@ public class WallsFragment extends ActionBarActivity {
                 out.close();
 
                 uri = Uri.fromFile(dest);
+*/
+
+                dest.getParentFile().mkdirs();
+                if (dest.exists()) {
+                    dest.delete();
+                }
+
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder().url(url).get().build();
+
+                Response response = client.newCall(request).execute();
+
+                BufferedSink sink = Okio.buffer(Okio.sink(dest));
+                sink.writeAll(response.body().source());
+                sink.close();
 
                 scan(activity.get(), "external");
 
@@ -345,12 +436,12 @@ public class WallsFragment extends ActionBarActivity {
             }
 
 
-            return new Pair<>(uri, bitmap);
+            return Uri.fromFile(dest);
         }
 
         @Override
-        protected void onPostExecute(Pair<Uri, Bitmap> uriBitmapPair) {
-            callback.callback(uriBitmapPair);
+        protected void onPostExecute(Uri uri) {
+            callback.callback(uri);
         }
     }
 
