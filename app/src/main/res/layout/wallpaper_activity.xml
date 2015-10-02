@@ -17,11 +17,20 @@
         gpb:type="folding_circles"
         android:layout_centerInParent="true"/>
 
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
         <ImageView
             android:id="@+id/bigwall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
+
+    </HorizontalScrollView>
 
     <View
         android:id="@+id/fabBg"
