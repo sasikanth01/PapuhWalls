@@ -121,6 +121,10 @@
     <string name="v22_line1">- Improvements to the wall fragments</string>
     <string name="v22_line2">- Remove header\'s profile selection tab</string>
     <string name="v22_line3">- 20 new wallpapers</string>
+    <!-- Version 2.0.3 -->
+    <string name="v23_line1">- More under the hood fixes (Thanks Andrzej)</string>
+    <string name="v23_line2">- Horizontal scrolling/Pinch to zoom </string>
+    <string name="v23_line3">- Pushbullet notification menu (Thanks Sasi)</string>
 
 
     <string name="notify">Wallpaper Notifications</string>
