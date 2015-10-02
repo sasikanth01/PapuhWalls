@@ -133,15 +133,13 @@ public class WallsFragment extends ActionBarActivity {
 
                 final HorizontalScrollView horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontal_scroll);
 
-                horizontalScrollView.post(new Runnable() {
+                horizontalScrollView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-                        int scrollAmount = (image.getMeasuredWidth() - horizontalScrollView.getMeasuredWidth())/2;
-
+                        int scrollAmount = (image.getMeasuredWidth() - horizontalScrollView.getMeasuredWidth()) / 2;
                         horizontalScrollView.smoothScrollBy(scrollAmount, 0);
                     }
-                });
+                }, 500);
 
             }
         }).execute();
@@ -355,33 +353,57 @@ public class WallsFragment extends ActionBarActivity {
             try {
 
                 dest.getParentFile().mkdirs();
-                if (dest.exists()) {
-                    dest.delete();
+
+                int i = 0;
+
+                //We're trying to download file 5 times
+                while (i < 5) {
+                    i++;
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+
+                    BitmapFactory.decodeFile(dest.getPath(), options);
+
+                    if (options.outWidth > 0 && options.outHeight > 0) {
+                        return Uri.fromFile(dest);
+                    } else {
+                        dest.delete();
+                    }
+
+                    OkHttpClient client = new OkHttpClient();
+
+                    Request request = new Request.Builder().url(url).get().build();
+
+                    Response response = client.newCall(request).execute();
+
+                    BufferedSink sink = Okio.buffer(Okio.sink(dest));
+                    sink.writeAll(response.body().source());
+                    sink.close();
+
                 }
-
-                OkHttpClient client = new OkHttpClient();
-
-                Request request = new Request.Builder().url(url).get().build();
-
-                Response response = client.newCall(request).execute();
-
-                BufferedSink sink = Okio.buffer(Okio.sink(dest));
-                sink.writeAll(response.body().source());
-                sink.close();
-
-                scan(activity.get(), "external");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            return Uri.fromFile(dest);
+            return null;
         }
 
         @Override
         protected void onPostExecute(Uri uri) {
-            callback.callback(uri);
+            if (uri != null) {
+                scan(activity.get(), "external");
+                callback.callback(uri);
+            } else {
+                new SnackBar.Builder(activity.get())
+                        .withMessage("Download failed")
+                        .withActionMessageId(R.string.ok)
+                        .withStyle(SnackBar.Style.ALERT)
+                        .withDuration(SnackBar.SHORT_SNACK)
+                        .show();
+            }
         }
     }
 
