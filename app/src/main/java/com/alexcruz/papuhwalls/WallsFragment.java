@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -100,8 +101,6 @@ public class WallsFragment extends ActionBarActivity {
             @Override
             public void callback(Uri uri) {
 
-                Log.d("TEST", "TEST");
-
                 if (uri == null) {
                     Log.e("Bitmap", "is null");
                     return;
@@ -131,6 +130,18 @@ public class WallsFragment extends ActionBarActivity {
                     image.setImageURI(uri);
                 }
 
+
+                final HorizontalScrollView horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontal_scroll);
+
+                horizontalScrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        int scrollAmount = (image.getMeasuredWidth() - horizontalScrollView.getMeasuredWidth())/2;
+
+                        horizontalScrollView.smoothScrollBy(scrollAmount, 0);
+                    }
+                });
 
             }
         }).execute();
