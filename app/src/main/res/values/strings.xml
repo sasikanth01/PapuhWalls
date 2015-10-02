@@ -123,6 +123,11 @@
     <string name="v22_line3">- 20 new wallpapers</string>
 
 
+    <string name="notify">Wallpaper Notifications</string>
+    <string name="notify_content">Get notifications when new wallpapers are added, from the Pushbullet channel.\n\nSubscribe to Papuh\'s channel to get notifications.</string>
+    <string name="notify_note"><b>NOTE : Pushbullet is required in order to receive new wallpaper notifications.</b></string>
+    <string name="notify_url">https://goo.gl/fMw0tE</string>
+
     <!---DO NOT TRANSLATE-->
     <!---DO NOT TRANSLATE-->
     <string name="json_allwalls_url" translatable="false">https://raw.githubusercontent.com/DirtyUnicorns/Papuh-Resources/master/all_wallpapers.json</string>

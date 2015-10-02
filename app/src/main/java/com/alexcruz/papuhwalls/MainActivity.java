@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -740,11 +741,39 @@ public class MainActivity extends ActionBarActivity  {
             case R.id.changelog:
                 changelog();
                 break;
+            case R.id.notify:
+                showNotify();
+                break;
             case R.id.clearcache:
                 clearApplicationData();
                 break;
         }
         return true;
+    }
+
+    String Notify;
+
+    private void showNotify() {
+        boolean wrapInScrollView = true;
+        new MaterialDialog.Builder(this)
+                .title(R.string.notify)
+                .customView(R.layout.notify, wrapInScrollView)
+                .positiveText("SUBSCRIBE")
+                .negativeText("No thanks")
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        Notify = getResources().getString(R.string.notify_url);
+                        Intent notifyurl = new Intent(Intent.ACTION_VIEW, Uri.parse(Notify));
+                        startActivity(notifyurl);
+                    }
+
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                    }
+                })
+                .iconRes(R.drawable.ic_notify)
+                .show();
     }
 
     private void changelog() {
