@@ -4,8 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jenzz.materialpreference.PreferenceCategory
-        android:title="@string/theme_settings" />
+        <com.jenzz.materialpreference.SwitchPreference
+            android:key="@string/time_context_headers"
+            android:title="@string/time_context_headers"
+            android:summaryOn="@string/disable_time_context_headers_summary"
+            android:summaryOff="@string/enable_time_context_headers_summary"
+            android:defaultValue="false" />
+
+    <com.jenzz.materialpreference.SwitchPreference
+        android:key="@string/poly_time_context_headers"
+        android:title="@string/poly_time_context_headers"
+        android:dependency="@string/time_context_headers"
+        android:defaultValue="false" />
+
+        <com.jenzz.materialpreference.PreferenceCategory
+            android:title="@string/theme_settings" />
 
         <yuku.ambilwarna.widget.AmbilWarnaPreference
             android:key="Theme"
@@ -74,13 +87,6 @@
             android:title="@string/theme_drawer_selected_icon"
             android:defaultValue="@color/primary"
             app:supportsAlpha="true"/>
-
-        <com.jenzz.materialpreference.SwitchPreference
-            android:key="@string/theme_dark_material_drawer_icons"
-            android:title="@string/theme_dark_material_drawer_icons"
-            android:summaryOn="@string/theme_dark_material_drawer_icons_enable"
-            android:summaryOff="@string/theme_dark_material_drawer_icons_disable"
-            android:defaultValue="false" />
 
         <yuku.ambilwarna.widget.AmbilWarnaPreference
             android:key="DrawerText"

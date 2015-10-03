@@ -34,7 +34,6 @@ public class SettingsActivity extends PreferenceActivity {
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerNavBarTheme;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerNormalIcon;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerSelectedIcon;
-        private SharedPreferences.OnSharedPreferenceChangeListener mListenerDarkMaterialDrawerIcons;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerPrimaryText;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerSecondaryText;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerAccent;
@@ -45,17 +44,13 @@ public class SettingsActivity extends PreferenceActivity {
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerFABshare;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerFABpressed;
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerFABbackground;
+        private SharedPreferences.OnSharedPreferenceChangeListener mListenerTimeContextHeaders;
+        private SharedPreferences.OnSharedPreferenceChangeListener mListenerPolyTimeContextHeaders;
 
         @SuppressWarnings("deprecation")
         @Override
         protected void onCreate(Bundle savedInstanceState) {
                 this.Preferences = new Preferences(getApplicationContext());
-                if (PreferenceManager.getDefaultSharedPreferences(this)
-                        .getBoolean(getString(R.string.theme_dark_material_drawer_icons), false)) {
-                        setTheme(R.style.DarkMaterialDrawerIcons);
-                } else {
-                        // Do absolutely NOTHING
-                }
 
                 super.onCreate(savedInstanceState);
                 addPreferencesFromResource(R.xml.settings);
@@ -134,19 +129,6 @@ public class SettingsActivity extends PreferenceActivity {
                                         if (Preferences.getNavigationTint()) {
                                                 getWindow().setNavigationBarColor(Preferences.NavBarTheme());
                                         }
-                                }
-                                finish();
-                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                                        SettingsActivity.this, MainActivity.class));
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                        }
-                };
-                mListenerDarkMaterialDrawerIcons = new SharedPreferences.OnSharedPreferenceChangeListener() {
-                        @Override
-                        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                                if (!key.equals(getString(R.string.theme_dark_material_drawer_icons))) {
-                                        return;
                                 }
                                 finish();
                                 final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
@@ -311,6 +293,32 @@ public class SettingsActivity extends PreferenceActivity {
                                 startActivity(intent);
                         }
                 };
+                mListenerTimeContextHeaders = new SharedPreferences.OnSharedPreferenceChangeListener() {
+                        @Override
+                        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                                if (!key.equals(getString(R.string.time_context_headers))) {
+                                        return;
+                                }
+                                finish();
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        SettingsActivity.this, MainActivity.class));
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                        }
+                };
+                mListenerPolyTimeContextHeaders = new SharedPreferences.OnSharedPreferenceChangeListener() {
+                        @Override
+                        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                                if (!key.equals(getString(R.string.poly_time_context_headers))) {
+                                        return;
+                                }
+                                finish();
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        SettingsActivity.this, MainActivity.class));
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                        }
+                };
         }
 
         public static int tint (int color, double factor) {
@@ -327,7 +335,6 @@ public class SettingsActivity extends PreferenceActivity {
                 super.onResume();
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerTheme);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerNavBarTheme);
-                getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerDarkMaterialDrawerIcons);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerPrimaryText);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerSecondaryText);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerAccent);
@@ -340,13 +347,14 @@ public class SettingsActivity extends PreferenceActivity {
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerFABbackground);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerNormalIcon);
                 getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerSelectedIcon);
+                getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerTimeContextHeaders);
+                getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerPolyTimeContextHeaders);
         }
 
         @Override
         public void onPause() {
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerTheme);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerNavBarTheme);
-                getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerDarkMaterialDrawerIcons);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerPrimaryText);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerSecondaryText);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerAccent);
@@ -359,6 +367,8 @@ public class SettingsActivity extends PreferenceActivity {
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerFABbackground);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerNormalIcon);
                 getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerSelectedIcon);
+                getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerTimeContextHeaders);
+                getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerPolyTimeContextHeaders);
                 super.onPause();
         }
 }

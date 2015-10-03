@@ -38,6 +38,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.File;
+import java.util.Calendar;
 
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import de.psdev.licensesdialog.LicensesDialog;
@@ -93,16 +94,16 @@ public class MainActivity extends ActionBarActivity  {
 
     Preferences Preferences;
 
+    private static final int TIME_SUNRISE = 6;
+    private static final int TIME_MORNING = 9;
+    private static final int TIME_NOON = 11;
+    private static final int TIME_AFTERNOON = 13;
+    private static final int TIME_SUNSET = 19;
+    private static final int TIME_NIGHT = 22;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.Preferences = new Preferences(getApplicationContext());
-
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.theme_dark_material_drawer_icons), false)) {
-            setTheme(R.style.DarkMaterialDrawerIcons);
-        } else {
-            // Do absolutely NOTHING
-        }
 
         super.onCreate(savedInstanceState);
 
@@ -182,9 +183,59 @@ public class MainActivity extends ActionBarActivity  {
 
         final IProfile profile = new ProfileDrawerItem().withName("Alex Cruz aka Mazda").withIcon(getResources().getDrawable(R.drawable.alexcruz)).withIdentifier(1);
 
+        int header = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.time_context_headers), false)) {
+            if (header < TIME_SUNRISE || header >= TIME_NIGHT) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_night;
+                } else {
+                    header = R.drawable.night;
+                }
+            } else if (header >= TIME_SUNRISE && header < TIME_MORNING) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_sunrise;
+                } else {
+                    header = R.drawable.sunrise;
+                }
+            } else if (header >= TIME_MORNING && header < TIME_NOON) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_morning;
+                } else {
+                    header = R.drawable.morning;
+                }
+            } else if (header >= TIME_NOON && header < TIME_AFTERNOON) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_noon;
+                } else {
+                    header = R.drawable.noon;
+                }
+            } else if (header >= TIME_AFTERNOON && header < TIME_SUNSET) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_afternoon;
+                } else {
+                    header = R.drawable.afternoon;
+                }
+            } else if (header >= TIME_SUNSET && header < TIME_NIGHT) {
+                if (PreferenceManager.getDefaultSharedPreferences(this)
+                        .getBoolean(getString(R.string.poly_time_context_headers), false)) {
+                    header = R.drawable.poly_sunset;
+                } else {
+                    header = R.drawable.sunset;
+                }
+            }
+        } else {
+            header = R.drawable.header;
+        }
+
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(header)
                 .withSelectionFirstLine(getResources().getString(R.string.app_long_name))
                 .withSelectionSecondLine(getResources().getString(R.string.app_dev_name))
                 .withSelectionListEnabledForSingleProfile(false)

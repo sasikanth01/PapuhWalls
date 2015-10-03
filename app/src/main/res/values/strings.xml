@@ -87,9 +87,6 @@
     <string name="theme_drawer_normal_icon">Drawer Normal Icon</string>
     <string name="theme_drawer_selected_icon">Drawer Selected Icon</string>
     <string name="theme_drawer_theme_summary">Change color of the drawer</string>
-    <string name="theme_dark_material_drawer_icons">Dark Drawer Icons</string>
-    <string name="theme_dark_material_drawer_icons_enable">Replace icons with light ones</string>
-    <string name="theme_dark_material_drawer_icons_disable">Replace icons with darker ones</string>
     <string name="theme_drawer_text_theme_title">Drawer Text</string>
     <string name="theme_drawer_text_theme_summary">Change color of the material drawer\'s text</string>
     <string name="theme_drawer_selected_text_theme_title">Drawer Selected Text</string>
@@ -110,6 +107,12 @@
     <string name="theme_fab_pressed_summary">Change color of the pressed buttons</string>
     <string name="theme_fab_background">Background color</string>
     <string name="theme_fab_background_summary">Change color of the background when FAB is expanded</string>
+    <string name="time_context_headers">Time Contextual Headers</string>
+    <string name="enable_time_context_headers_summary">Enable time contextual images</string>
+    <string name="disable_time_context_headers_summary">Disable time contextual images</string>
+
+    <string name="poly_time_context_headers">(Poly) Contextual Headers</string>
+
 
     <!-- Changelog -->
     <!-- Initial Release -->
