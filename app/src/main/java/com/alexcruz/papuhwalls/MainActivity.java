@@ -213,7 +213,7 @@ public class MainActivity extends ActionBarActivity {
                 .withSavedInstance(savedInstanceState)
                 .withFooterDivider(true)
                 .withSliderBackgroundColor(Preferences.Drawer())
-                .withStatusBarColor(tint(Preferences.Theme(), 0.8))
+                .withStatusBarColor(Preferences.StatusBarTint() ? tint(Preferences.Theme(), 0.8) : Preferences.Theme())
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(Home).withIcon(R.drawable.ic_home).withIconTintingEnabled(true).withSelectedIconColor(Preferences.SelectedIcon()).withIconColor(Preferences.NormalIcon()).withSelectedTextColor(tint(Preferences.SelectedDrawerText(), 1.0)).withSelectedColor(tint(Preferences.DrawerSelector(), 1.0)).withTextColor(Preferences.DrawerText()).withIdentifier(1),
                         new PrimaryDrawerItem().withName(AllWalls).withIcon(R.drawable.ic_allwalls).withIconTintingEnabled(true).withSelectedIconColor(Preferences.SelectedIcon()).withIconColor(Preferences.NormalIcon()).withSelectedTextColor(tint(Preferences.SelectedDrawerText(), 1.0)).withSelectedColor(tint(Preferences.DrawerSelector(), 1.0)).withTextColor(Preferences.DrawerText()).withIdentifier(2).withBadge("1554+").withBadgeStyle(new BadgeStyle().withTextColor(Preferences.BadgeText()).withColor(Preferences.BadgeBackground())),
