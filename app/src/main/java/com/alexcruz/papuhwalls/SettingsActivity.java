@@ -70,7 +70,7 @@ public class SettingsActivity extends PreferenceActivity {
                         toolbar.setTitle(getResources().getString(R.string.settings));
                 } else {
                         ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-                        ListView content = (ListView) root.getChildAt(0);
+                        View content = root.getChildAt(0);
 
                         root.removeAllViews();
 
