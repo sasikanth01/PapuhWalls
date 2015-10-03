@@ -6,6 +6,7 @@
         <item>@array/v21</item>
         <item>@array/v22</item>
         <item>@array/v23</item>
+        <item>@array/v24</item>
     </string-array>
 
     <string-array name="v2">
@@ -31,6 +32,14 @@
         <item>@string/v23_line1</item>
         <item>@string/v23_line2</item>
         <item>@string/v23_line3</item>
+    </string-array>
+
+    <string-array name="v24">
+        <item>V2.0.4</item>
+        <item>@string/v24_line1</item>
+        <item>@string/v24_line2</item>
+        <item>@string/v24_line3</item>
+        <item>@string/v24_line4</item>
     </string-array>
 
 </resources>

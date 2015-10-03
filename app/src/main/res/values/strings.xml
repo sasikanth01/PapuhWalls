@@ -114,9 +114,11 @@
     <string name="time_context_headers">Time Contextual Headers</string>
     <string name="enable_time_context_headers_summary">Enable time contextual images</string>
     <string name="disable_time_context_headers_summary">Disable time contextual images</string>
-
     <string name="poly_time_context_headers">(Poly) Contextual Headers</string>
-
+    <string name="notify">Wallpaper Notifications</string>
+    <string name="notify_content">Get notifications when new wallpapers are added, from the Pushbullet channel.\n\nSubscribe to Papuh\'s channel to get notifications.</string>
+    <string name="notify_note"><b>NOTE : Pushbullet is required in order to receive new wallpaper notifications.</b></string>
+    <string name="notify_url">https://goo.gl/fMw0tE</string>
 
     <!-- Changelog -->
     <!-- Initial Release -->
@@ -132,12 +134,11 @@
     <string name="v23_line1">- More under the hood fixes (Thanks Andrzej)</string>
     <string name="v23_line2">- Horizontal scrolling/Pinch to zoom </string>
     <string name="v23_line3">- Pushbullet notification menu (Thanks Sasi)</string>
-
-
-    <string name="notify">Wallpaper Notifications</string>
-    <string name="notify_content">Get notifications when new wallpapers are added, from the Pushbullet channel.\n\nSubscribe to Papuh\'s channel to get notifications.</string>
-    <string name="notify_note"><b>NOTE : Pushbullet is required in order to receive new wallpaper notifications.</b></string>
-    <string name="notify_url">https://goo.gl/fMw0tE</string>
+    <!-- Version 2.0.4 -->
+    <string name="v24_line1">- Reworked how settings handle themeing (Thanks Andrzej)</string>
+    <string name="v24_line2">- Added time-context headers to material drawer</string>
+    <string name="v24_line3">- Added 95 new wallpapers</string>
+    <string name="v24_line4">- Added French translations (Thanks Kevin)</string>
 
     <!---DO NOT TRANSLATE-->
     <!---DO NOT TRANSLATE-->
