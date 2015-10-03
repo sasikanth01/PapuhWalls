@@ -119,6 +119,8 @@
     <string name="notify_content">Get notifications when new wallpapers are added, from the Pushbullet channel.\n\nSubscribe to Papuh\'s channel to get notifications.</string>
     <string name="notify_note"><b>NOTE : Pushbullet is required in order to receive new wallpaper notifications.</b></string>
     <string name="notify_url">https://goo.gl/fMw0tE</string>
+    <string name="pushbullet_subscribe">SUBSCRIBE</string>
+    <string name="pushbullet_nothanks">NO THANKS</string>
 
     <!-- Changelog -->
     <!-- Initial Release -->

@@ -803,8 +803,8 @@ public class MainActivity extends ActionBarActivity {
         new MaterialDialog.Builder(this)
                 .title(R.string.notify)
                 .customView(R.layout.notify, wrapInScrollView)
-                .positiveText("SUBSCRIBE")
-                .negativeText("No thanks")
+                .positiveText(R.string.pushbullet_subscribe)
+                .negativeText(R.string.pushbullet_nothanks)
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
