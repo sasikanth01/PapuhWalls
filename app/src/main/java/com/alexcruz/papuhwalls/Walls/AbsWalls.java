@@ -87,29 +87,13 @@ public abstract class AbsWalls extends Fragment {
                     arraylist.add(map);
                 }
             } catch (JSONException e) {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        new SnackBar.Builder(getActivity().getApplicationContext(), root)
-                                .withMessageId(R.string.json_error_toast)
-                                .withActionMessageId(R.string.ok)
-                                .withStyle(SnackBar.Style.ALERT)
-                                .withDuration(SnackBar.MED_SNACK)
-                                .show();
-                    }
-                });
+                new SnackBar.Builder(getActivity().getApplicationContext(), root)
+                        .withMessageId(R.string.json_error_toast)
+                        .withActionMessageId(R.string.ok)
+                        .withStyle(SnackBar.Style.ALERT)
+                        .withDuration(SnackBar.MED_SNACK)
+                        .show();
                 e.printStackTrace();
-            }
-            else {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        new SnackBar.Builder(getActivity().getApplicationContext(), root)
-                                .withMessageId(R.string.json_error_toast)
-                                .withActionMessageId(R.string.ok)
-                                .withStyle(SnackBar.Style.ALERT)
-                                .withDuration(SnackBar.MED_SNACK)
-                                .show();
-                    }
-                });
             }
             return null;
         }
@@ -132,10 +116,6 @@ public abstract class AbsWalls extends Fragment {
                 }
             });
         }
-    }
-
-
-    private void runOnUiThread(Runnable runnable) {
     }
 
 }

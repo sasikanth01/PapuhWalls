@@ -786,7 +786,7 @@ public class MainActivity extends ActionBarActivity  {
                     public void onPositive(MaterialDialog dialog) {
                     }
                 })
-        .show();
+                .show();
     }
 
     private void showNotConnectedDialog() {
