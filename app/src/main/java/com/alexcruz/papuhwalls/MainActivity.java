@@ -224,10 +224,18 @@ public class MainActivity extends ActionBarActivity {
             header = R.drawable.header;
         }
 
+        String versionName;
+
+        try {
+            versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(header)
-                .withSelectionFirstLine(getResources().getString(R.string.app_long_name))
+                .withSelectionFirstLine(getResources().getString(R.string.app_long_name) + versionName)
                 .withSelectionSecondLine(getResources().getString(R.string.app_dev_name))
                 .withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(

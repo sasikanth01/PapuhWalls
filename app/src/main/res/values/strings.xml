@@ -4,7 +4,7 @@
     <!-- Main -->
     <string name="app_name" translatable="false">Papuh</string>
     <string name="package_name" translatable="false">com.alexcruz.papuh</string>
-    <string name="app_long_name" translatable="false">Papuh Walls v2.0</string>
+    <string name="app_long_name" translatable="false">Papuh Walls v</string>
     <string name="app_dev_name">by Alex Cruz</string>
     <string name="email_address" translatable="false">mazdarider23@gmail.com</string>
     <string name="play_store_link" translatable="false">https://play.google.com/store/apps/details?id=com.alexcruz.papuh</string>
