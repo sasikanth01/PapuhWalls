@@ -142,7 +142,7 @@ public class WallsFragment extends ActionBarActivity {
                 }, 500);
 
             }
-        }).execute();
+        }, false).execute();
 
 
         final FloatingActionsMenu wallsFab = (FloatingActionsMenu) findViewById(R.id.wall_actions);
@@ -329,22 +329,32 @@ public class WallsFragment extends ActionBarActivity {
         private String url;
         private File dest;
         private Callback<Uri> callback;
+        private boolean showSnackBar;
 
         public DownloadBitmap(Activity activity, String url, File dest, Callback<Uri> callback) {
+            this(activity, url, dest, callback, true);
+        }
+
+
+        public DownloadBitmap(Activity activity, String url, File dest, Callback<Uri> callback, boolean showSnackBar) {
             this.url = url;
             this.dest = dest;
             this.activity = new WeakReference<>(activity);
             this.callback = callback;
+            this.showSnackBar = showSnackBar;
         }
+
 
         @Override
         protected void onPreExecute() {
-            new SnackBar.Builder(activity.get())
-                    .withMessageId(R.string.wallpaper_downloading_wait)
-                    .withActionMessageId(R.string.ok)
-                    .withStyle(SnackBar.Style.ALERT)
-                    .withDuration(SnackBar.SHORT_SNACK)
-                    .show();
+            if (showSnackBar) {
+                new SnackBar.Builder(activity.get())
+                        .withMessageId(R.string.wallpaper_downloading_wait)
+                        .withActionMessageId(R.string.ok)
+                        .withStyle(SnackBar.Style.ALERT)
+                        .withDuration(SnackBar.SHORT_SNACK)
+                        .show();
+            }
         }
 
         @Override
