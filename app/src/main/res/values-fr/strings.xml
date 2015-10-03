@@ -176,7 +176,7 @@ Voulez-vous l\'installer ?"</string>
     <string name="pref_navbar_tint">Barre de navigation teintée</string>
     <string name="pref_navbar_tint_title">Barre de navigation teintée (Uniquement Lollipop/M)</string>
     <string name="theme_settings">Paramètres du thème</string>
-    <string name="theme_toolbar_title">Barre d\'outils (Uniquement Lollipop/M)</string>
+    <string name="theme_toolbar_title">Barre d\'outils</string>
     <string name="theme_toolbar_summary">Modifier la couleur de la barre d\'outils</string>
     <string name="theme_navbar_title">Barre de navigation (Uniquement Lollipop/M)</string>
     <string name="theme_navbar_summary">Modifier la couleur de la barre de navigation</string>

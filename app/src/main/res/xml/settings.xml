@@ -14,6 +14,13 @@
             android:defaultValue="@color/primary"
             app:supportsAlpha="true"/>
 
+        <com.jenzz.materialpreference.SwitchPreference
+            android:key="StatusBarTint"
+            android:title="@string/theme_statusbar_tint_title"
+            android:summaryOn="@string/theme_disable_statusbar_tint_summary"
+            android:summaryOff="@string/theme_enable_statusbar_tint_summary"
+            android:defaultValue="true" />
+
         <yuku.ambilwarna.widget.AmbilWarnaPreference
             android:key="NavBarTheme"
             android:title="@string/theme_navbar_title"

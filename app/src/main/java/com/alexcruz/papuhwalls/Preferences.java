@@ -1,9 +1,13 @@
 package com.alexcruz.papuhwalls;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.Toolbar;
 
 public class Preferences {
 
@@ -12,6 +16,7 @@ public class Preferences {
 
     public static final String Theme = "Theme";
     public static final String NavBarTheme = "NavBarTheme";
+    public static final String StatusBarTint = "StatusBarTint";
     public static final String NavigationTint = "NavigationTint";
     public static final String Background = "Background";
     public static final String PrimaryText = "PrimaryText";
@@ -45,9 +50,8 @@ public class Preferences {
         return sharedPreferences.getBoolean(NavigationTint, true);
     }
 
-    public void setNavigationInt(Boolean res) {
-        editor.putBoolean(NavigationTint, res);
-        editor.commit();
+    public boolean StatusBarTint() {
+        return sharedPreferences.getBoolean(StatusBarTint, true);
     }
 
     public int Background() {
@@ -128,7 +132,7 @@ public class Preferences {
 
     String wall_name, wall_author, wall_url;
 
-    public Preferences (String wall_name, String wall_author, String wall_url) {
+    public Preferences(String wall_name, String wall_author, String wall_url) {
         this.wall_name = wall_name;
         this.wall_author = wall_author;
         this.wall_url = wall_url;
@@ -169,17 +173,17 @@ public class Preferences {
         return getSharedPreferences().getBoolean(ROTATE_MINUTE, false);
     }
 
-    public static final String IS_FIRST__RUN="first_run";
+    public static final String IS_FIRST__RUN = "first_run";
 
     public int getRotateTime() {
         return getSharedPreferences().getInt(ROTATE_TIME, 900000);
     }
 
-    public void setRotateTime (int time) {
+    public void setRotateTime(int time) {
         getSharedPreferences().edit().putInt(ROTATE_TIME, time).apply();
     }
 
-    public void setRotateMinute (boolean bool) {
+    public void setRotateMinute(boolean bool) {
         getSharedPreferences().edit().putBoolean(ROTATE_MINUTE, bool).apply();
     }
 
@@ -187,9 +191,82 @@ public class Preferences {
         try {
             context.getPackageManager().getApplicationInfo(packageName, 0);
             return true;
-        }
-        catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
     }
+
+    public static void resetPrefs(Activity context) {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+
+        editor.putInt(Theme, context.getResources().getColor(R.color.primary))
+                .putInt(NavBarTheme, context.getResources().getColor(R.color.primary))
+                .putBoolean(NavigationTint, true)
+                .putBoolean(StatusBarTint, true)
+                .putInt(Background, context.getResources().getColor(R.color.navigation_drawer_color))
+                .putInt(PrimaryText, context.getResources().getColor(R.color.primary))
+                .putInt(SecondaryText, context.getResources().getColor(R.color.semitransparent_white))
+                .putInt(Accent, context.getResources().getColor(R.color.accent))
+                .putInt(Drawer, context.getResources().getColor(R.color.navigation_drawer_color))
+                .putInt(NormalIcon, context.getResources().getColor(R.color.white))
+                .putInt(SelectedIcon, context.getResources().getColor(R.color.primary))
+                .putInt(DrawerText, context.getResources().getColor(R.color.white))
+                .putInt(SelectedDrawerText, context.getResources().getColor(R.color.primary))
+                .putInt(DrawerSelector, context.getResources().getColor(R.color.selector_drawer_color))
+                .putInt(BadgeBackground, context.getResources().getColor(R.color.primary))
+                .putInt(BadgeText, context.getResources().getColor(R.color.white))
+                .putInt(FABapply, context.getResources().getColor(R.color.apply_color))
+                .putInt(FABsave, context.getResources().getColor(R.color.save_color))
+                .putInt(FABcrop, context.getResources().getColor(R.color.crop_color))
+                .putInt(FABedit, context.getResources().getColor(R.color.edit_color))
+                .putInt(FABshare, context.getResources().getColor(R.color.share_color))
+                .putInt(FABpressed, context.getResources().getColor(R.color.primary))
+                .putInt(FABbackground, context.getResources().getColor(R.color.black_semi_transparent))
+                .commit();
+
+    }
+
+    public static void themeMe(Activity activity, Toolbar toolbar) {
+
+        Preferences preferences = new Preferences(activity);
+
+        toolbar.setBackgroundColor(preferences.Theme());
+        activity.getWindow().getDecorView().setBackgroundColor(preferences.Background());
+
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.getWindow().setStatusBarColor(preferences.Theme());
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (preferences.getNavigationTint()) {
+                activity.getWindow().setNavigationBarColor(preferences.NavBarTheme());
+            } else {
+                activity.getWindow().setNavigationBarColor(activity.getResources().getColor(R.color.navigation_drawer_color));
+            }
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (preferences.StatusBarTint()) {
+                activity.getWindow().setStatusBarColor(tint(preferences.Theme(), 0.8));
+            } else {
+                activity.getWindow().setStatusBarColor(preferences.Theme());
+            }
+        }
+
+
+    }
+
+
+    public static int tint(int color, double factor) {
+        int a = Color.alpha(color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+
+        return Color.argb(a, Math.max((int) (r * factor), 0), Math.max((int) (g * factor), 0), Math.max((int) (b * factor), 0));
+    }
+
+
 }

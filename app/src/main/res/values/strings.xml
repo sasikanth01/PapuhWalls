@@ -66,11 +66,15 @@
     <string name="wallpaper_downloading_wait">Please wait while we pull the wallpaper</string>
     <string name="wallpaper_item_name">"Wallpaper "</string>
     <string name="clear_cache">Clear Cache</string>
+    <string name="reset_data">Reset Data</string>
     <string name="theme_settings">Theme Settings</string>
-    <string name="theme_toolbar_title">Toolbar (Lollipop/M Only)</string>
+    <string name="theme_toolbar_title">Toolbar</string>
     <string name="theme_toolbar_summary">Change color of the toolbar</string>
     <string name="theme_navbar_title">NavBar (Lollipop/M Only)</string>
     <string name="theme_navbar_summary">Change color of the navigation bar</string>
+    <string name="theme_statusbar_tint_title">Status Bar Tint (Lollipop/M Only)</string>
+    <string name="theme_enable_statusbar_tint_summary">Enable Status Bar Tint</string>
+    <string name="theme_disable_statusbar_tint_summary">Disable Status Bar Tint</string>
     <string name="theme_navbar_tint_title">NavBar Tint (Lollipop/M Only)</string>
     <string name="theme_enable_navbar_tint_summary">Enable Navigation Bar Tint</string>
     <string name="theme_disable_navbar_tint_summary">Disable Navigation Bar Tint</string>

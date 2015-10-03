@@ -8,4 +8,21 @@
     android:transitionName="actionBar"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:navigationIcon="?attr/homeAsUpIndicator">
+
+
+    <!-- Hack to add button to toolbar in settings -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:clickable="true"
+        android:id="@+id/resetData"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"
+        android:text="@string/reset_data"/>
+
+
 </android.support.v7.widget.Toolbar>

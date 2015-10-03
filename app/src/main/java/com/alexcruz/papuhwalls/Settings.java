@@ -34,21 +34,8 @@ public class Settings extends ActionBarActivity implements View.OnClickListener 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
 
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            toolbar.setBackgroundColor(Preferences.Theme());
-            getWindow().getDecorView().setBackgroundColor(Preferences.Background());
-            getWindow().setStatusBarColor(Preferences.Theme());
-        }
 
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            if (Preferences.getNavigationTint()) {
-                getWindow().setNavigationBarColor(Preferences.NavBarTheme());
-            }
-        }
-
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            getWindow().setStatusBarColor(tint(Preferences.Theme(), 0.8));
-        }
+        com.alexcruz.papuhwalls.Preferences.themeMe(this, toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,13 +116,13 @@ public class Settings extends ActionBarActivity implements View.OnClickListener 
         }
     }
 
-    public static int tint (int color, double factor) {
+    public static int tint(int color, double factor) {
         int a = Color.alpha(color);
         int r = Color.red(color);
-        int g = Color.green( color );
+        int g = Color.green(color);
         int b = Color.blue(color);
 
-        return Color.argb(a, Math.max( (int)(r * factor), 0 ), Math.max( (int)(g * factor), 0 ), Math.max( (int)(b * factor), 0 ) );
+        return Color.argb(a, Math.max((int) (r * factor), 0), Math.max((int) (g * factor), 0), Math.max((int) (b * factor), 0));
     }
 
     private int ConvertMinuteToMili(int minute) {

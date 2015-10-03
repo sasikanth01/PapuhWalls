@@ -46,7 +46,7 @@ import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.model.Notice;
 
-public class MainActivity extends ActionBarActivity  {
+public class MainActivity extends ActionBarActivity {
 
     private String Home;
     private String AllWalls;
@@ -132,17 +132,8 @@ public class MainActivity extends ActionBarActivity  {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            toolbar.setBackgroundColor(Preferences.Theme());
-            getWindow().getDecorView().setBackgroundColor(Preferences.Background());
-            getWindow().setStatusBarColor(Preferences.Theme());
-        }
+        com.alexcruz.papuhwalls.Preferences.themeMe(this, toolbar);
 
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            if (Preferences.getNavigationTint()) {
-                getWindow().setNavigationBarColor(Preferences.NavBarTheme());
-            }
-        }
 
         Home = getResources().getString(R.string.app_name);
         final String Home = getResources().getString(R.string.section_home);
@@ -515,20 +506,15 @@ public class MainActivity extends ActionBarActivity  {
         } else {
             // Do absolutely NOTHING
         }
-        if (android.os.Build.VERSION.SDK_INT < 21) {
-            result.removeItem(30);
-        } else {
-            // Do absolutely NOTHING
-        }
     }
 
-    public static int tint (int color, double factor) {
+    public static int tint(int color, double factor) {
         int a = Color.alpha(color);
         int r = Color.red(color);
         int g = Color.green(color);
         int b = Color.blue(color);
 
-        return Color.argb(a, Math.max( (int)(r * factor), 0 ), Math.max( (int)(g * factor), 0 ), Math.max( (int)(b * factor), 0 ) );
+        return Color.argb(a, Math.max((int) (r * factor), 0), Math.max((int) (g * factor), 0), Math.max((int) (b * factor), 0));
     }
 
     void switchWalls(int itemId, String title, String fragment) {
@@ -549,7 +535,7 @@ public class MainActivity extends ActionBarActivity  {
         tx.commit();
     }
 
-    public void FloatingActionButton (final View view) {
+    public void FloatingActionButton(final View view) {
         final String name = "Floating Action Button";
         final String url = "https://goo.gl/sGwRWj";
         final String copyright = "Copyright 2015 Dmytro Tarianyk";
@@ -561,7 +547,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void MaterialDialogs (final View view) {
+    public void MaterialDialogs(final View view) {
         final String name = "Material Dialogs";
         final String url = "https://goo.gl/IGTokc";
         final String copyright = "Copyright (c) 2015 Aidan Michael Follestad";
@@ -573,7 +559,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void MaterialDrawer (final View view) {
+    public void MaterialDrawer(final View view) {
         final String name = "Material Drawer";
         final String url = "https://goo.gl/dD26uE";
         final String copyright = "Copyright 2015 Mike Penz";
@@ -585,7 +571,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void Picasso (final View view) {
+    public void Picasso(final View view) {
         final String name = "Picasso";
         final String url = "https://goo.gl/aKSVaH";
         final String copyright = "Copyright 2013 Square, Inc.";
@@ -597,7 +583,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void Okhttp (final View view) {
+    public void Okhttp(final View view) {
         final String name = "Okhttp";
         final String url = "https://goo.gl/J6JvY3";
         final String copyright = "Copyright 2011 Square, Inc.";
@@ -609,7 +595,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void Snackbar (final View view) {
+    public void Snackbar(final View view) {
         final String name = "Snackbar";
         final String url = "https://goo.gl/hg7GoU";
         final String copyright = "Copyright 2014 Jon Wimer";
@@ -621,7 +607,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void Crash (final View view) {
+    public void Crash(final View view) {
         final String name = "Custom Activity On Crash";
         final String url = "https://goo.gl/Ym1qXK";
         final String copyright = "Copyright (c) 2014-2015 Eduard Ereza";
@@ -633,7 +619,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void AppIntro (final View view) {
+    public void AppIntro(final View view) {
         final String name = "AppIntro";
         final String url = "https://goo.gl/5C5Np8";
         final String copyright = "Copyright 2015 Paolo Rotolo";
@@ -645,7 +631,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void MaterialRipple (final View view) {
+    public void MaterialRipple(final View view) {
         final String name = "Material Ripple Layout";
         final String url = "https://goo.gl/BRPpkJ";
         final String copyright = "Copyright 2015 Balys Valentukevicius";
@@ -657,7 +643,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void MaterialPreference (final View view) {
+    public void MaterialPreference(final View view) {
         final String name = "Material Preference";
         final String url = "https://goo.gl/ugkiRC";
         final String copyright = "Copyright (c) 2015 Jens Driller";
@@ -669,7 +655,7 @@ public class MainActivity extends ActionBarActivity  {
                 .show();
     }
 
-    public void LicensesDialog (final View view) {
+    public void LicensesDialog(final View view) {
         final String name = "Licenses Dialog";
         final String url = "https://goo.gl/AJ0Prh";
         final String copyright = "Copyright 2013 Philip Schiffer";
