@@ -233,9 +233,22 @@ Voulez-vous l\'installer ?"</string>
     <string name="v23_line1">- Divers correctifs (Merci à Andrzej)</string>
     <string name="v23_line2">- Défilement horizontal/Pincer pour zoomer</string>
     <string name="v23_line3">- Menu de notification Pushbullet (Merci à Sasi)</string>
-
-
     <string name="notify">Notifications</string>
     <string name="notify_content">Recevez des notifications lorsque de nouveaux fonds d\'écran sont ajoutés, à partir du canal Pushbullet.\n\nSouscrire au canal de Papuh pour recevoir les notifications.</string>
     <string name="notify_note"><b>NOTE : Pushbullet est nécessaire pour recevoir les notifications de nouveaux fonds d\'écran.</b></string>
+    <string name="reset_data">Réinitialiser les données</string>
+    <string name="theme_statusbar_tint_title">Barre d\'état teintée (Uniquement Lollipop/M)</string>
+    <string name="theme_enable_statusbar_tint_summary">Activer la barre d\'état teintée</string>
+    <string name="theme_disable_statusbar_tint_summary">Désactiver la barre d\'état teintée</string>
+    <string name="time_context_headers">En-tête contextuel</string>
+    <string name="enable_time_context_headers_summary">Activer le changement d\'image en fonction de l\'heure</string>
+    <string name="disable_time_context_headers_summary">Désactiver le changement d\'image en fonction de l\'heure</string>
+    <string name="poly_time_context_headers">(Poly) En-tête contextuel</string>
+    <string name="pushbullet_subscribe">S\'ABONNER</string>
+    <string name="pushbullet_nothanks">NON MERCI</string>
+    <!-- Version 2.0.4 -->
+    <string name="v24_line1">- Nouveau fonctionnement du thème (Merci à Andrzej)</string>
+    <string name="v24_line2">- Ajout de l\'en-tête contextuel au tiroir</string>
+    <string name="v24_line3">- Ajout de 95 nouveaux fonds d\'écran</string>
+    <string name="v24_line4">- Ajout de la traduction française (Merci à Kevin)</string>
 </resources>
