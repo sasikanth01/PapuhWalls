@@ -46,6 +46,8 @@ public class WallsFragment extends ActionBarActivity {
     private Activity context;
     Preferences Preferences;
 
+    private FloatingActionsMenu fab;
+
     private static final int ACTIVITY_SHARE = 13452;
 
     @Override
@@ -63,6 +65,8 @@ public class WallsFragment extends ActionBarActivity {
         getSupportActionBar().setTitle(R.string.title_ab_detailed_wallpaper);
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        fab = (FloatingActionsMenu) findViewById(R.id.wall_actions);
 
         fabBg = findViewById(R.id.fabBg);
         fabBg.setVisibility(View.GONE);
@@ -90,8 +94,6 @@ public class WallsFragment extends ActionBarActivity {
         setFullScreen();
 
         scan(this, "external");
-
-        fabBg = findViewById(R.id.fabBg);
 
         final ImageView image = (ImageView) findViewById(R.id.bigwall);
         wall = getIntent().getStringExtra("wall");
@@ -172,6 +174,7 @@ public class WallsFragment extends ActionBarActivity {
                         try {
                             WallpaperManager wm = WallpaperManager.getInstance(context);
                             wm.setStream(context.getContentResolver().openInputStream(object));
+                            fab.collapse();
 
                             new SnackBar.Builder(context)
                                     .withMessageId(R.string.set_as_wall_done)
@@ -185,7 +188,6 @@ public class WallsFragment extends ActionBarActivity {
                         }
                     }
                 }).execute();
-
             }
         });
 
@@ -199,6 +201,7 @@ public class WallsFragment extends ActionBarActivity {
                 new DownloadBitmap(context, wall, destWallFile, new Callback<Uri>() {
                     @Override
                     public void callback(Uri object) {
+                        fab.collapse();
 
                         MaterialDialog dialog = new MaterialDialog.Builder(context)
                                 .title(getString(R.string.done))
@@ -234,6 +237,7 @@ public class WallsFragment extends ActionBarActivity {
                         setWall.setDataAndType(uri, "image/*");
                         setWall.putExtra("png", "image/*");
                         startActivityForResult(Intent.createChooser(setWall, getString(R.string.set_as)), 1);
+                        fab.collapse();
                     }
                 }).execute();
 
@@ -254,6 +258,7 @@ public class WallsFragment extends ActionBarActivity {
                         editWall.setDataAndType(uri, "image/*");
                         editWall.putExtra("png", "image/*");
                         startActivityForResult(Intent.createChooser(editWall, getString(R.string.edit_wall)), 1);
+                        fab.collapse();
                     }
                 }).execute();
 
@@ -274,6 +279,7 @@ public class WallsFragment extends ActionBarActivity {
                         shareIntent.setType("image/*");
                         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                         WallsFragment.this.startActivityForResult(Intent.createChooser(shareIntent, "Share Via"), ACTIVITY_SHARE);
+                        fab.collapse();
                     }
                 }).execute();
 
