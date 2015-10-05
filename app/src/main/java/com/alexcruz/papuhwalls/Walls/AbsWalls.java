@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.alexcruz.papuhwalls.JSONParser;
 import com.alexcruz.papuhwalls.R;
 import com.alexcruz.papuhwalls.WallsFragment;
@@ -96,6 +98,7 @@ public abstract class AbsWalls extends Fragment {
             mGridView.setNumColumns(numColumns);
             mGridAdapter = new WallsGridAdapter(context, arraylist, numColumns);
             mGridView.setAdapter(mGridAdapter);
+            mGridView.setVerticalScrollBarEnabled(false);
             mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -106,15 +109,25 @@ public abstract class AbsWalls extends Fragment {
                     context.startActivity(intent);
                 }
             });
+            mGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    new MaterialDialog.Builder(getActivity())
+                            .titleGravity(GravityEnum.CENTER)
+                            .title(R.string.credit_wallpaper)
+                            .contentGravity(GravityEnum.CENTER)
+                            .content(WallsGridAdapter.jsondata.get(AbsWalls.AUTHOR))
+                            .callback(new MaterialDialog.ButtonCallback() {
+                            })
+                            .show();
+                    return true;
+                }
+            });
         }
-
     }
-
 
     public void updateGridView() {
         mGridView.setNumColumns(numColumns);
         mGridView.startLayoutAnimation();
     }
-
-
 }

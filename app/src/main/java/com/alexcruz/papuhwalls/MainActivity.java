@@ -273,6 +273,7 @@ public class MainActivity extends ActionBarActivity {
                 .withAccountHeader(headerResult)
                 .withHeader(R.layout.header)
                 .withSavedInstance(savedInstanceState)
+                .withScrollToTopAfterClick(true)
                 .withFooterDivider(true)
                 .withSliderBackgroundColor(Preferences.Drawer())
                 .withStatusBarColor(Preferences.StatusBarTint() ? tint(Preferences.Theme(), 0.8) : Preferences.Theme())

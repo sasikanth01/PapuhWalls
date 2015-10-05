@@ -125,6 +125,8 @@
     <string name="grid_changer_column_two">2 Columns</string>
     <string name="grid_changer_column_three">3 Columns</string>
 
+    <string name="credit_wallpaper">Wallpaper contributed by</string>
+
 
     <!-- Changelog -->
     <!-- Initial Release -->

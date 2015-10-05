@@ -27,7 +27,7 @@ public class WallsGridAdapter extends BaseAdapter {
     ArrayList<HashMap<String, String>> data;
     public String wallurl;
     private int numColumns;
-    private HashMap<String, String> jsondata = new HashMap<String, String>();
+    public static HashMap<String, String> jsondata = new HashMap<String, String>();
 
     private WallsHolder holder;
 
@@ -85,7 +85,7 @@ public class WallsGridAdapter extends BaseAdapter {
 
         holder.name.setText(jsondata.get(AllWalls.NAME));
 
-        holder.author.setText(jsondata.get(AllWalls.AUTHOR));
+        jsondata.get(AllWalls.AUTHOR);
 
         wallurl = jsondata.get(AllWalls.WALL);
 
@@ -113,13 +113,11 @@ public class WallsGridAdapter extends BaseAdapter {
     class WallsHolder {
         ImageView wall;
         TextView name;
-        TextView author;
         final MaterialRippleLayout content;
 
         WallsHolder(View v) {
             wall = (ImageView) v.findViewById(R.id.wall);
             name = (TextView) v.findViewById(R.id.name);
-            author = (TextView) v.findViewById(R.id.author);
             content = (MaterialRippleLayout) v.findViewById(R.id.walls_ripple);
         }
 

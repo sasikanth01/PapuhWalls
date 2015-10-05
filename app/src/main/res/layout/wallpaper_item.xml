@@ -40,16 +40,4 @@
             android:background="#80171717"
             android:gravity="center|center_vertical" />
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/cards_padding"
-        android:paddingRight="@dimen/cards_padding"
-        android:textSize="@dimen/text_small"
-        tools:text="Author"
-        android:layout_gravity="center|top"
-        android:background="#80171717"
-        android:gravity="center" />
-
 </FrameLayout>
