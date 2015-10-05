@@ -28,6 +28,9 @@
             <item
                 android:id="@+id/threecolumn"
                 android:title="@string/grid_changer_column_three" />
+            <item
+                android:id="@+id/fourcolumn"
+                android:title="@string/grid_changer_column_four" />
         </menu>
     </item>
     <item

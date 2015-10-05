@@ -808,6 +808,10 @@ public class MainActivity extends ActionBarActivity {
                 AbsWalls.numColumns = 3;
                 refreshGridView();
                 break;
+            case R.id.fourcolumn:
+                AbsWalls.numColumns = 4;
+                refreshGridView();
+                break;
         }
         return true;
     }

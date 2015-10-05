@@ -124,6 +124,7 @@
     <string name="grid_changer_column_one">1 Column</string>
     <string name="grid_changer_column_two">2 Columns</string>
     <string name="grid_changer_column_three">3 Columns</string>
+    <string name="grid_changer_column_four">4 Columns</string>
 
     <string name="credit_wallpaper">Wallpaper contributed by</string>
 
