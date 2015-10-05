@@ -74,9 +74,4 @@
         <attr name="contentPaddingBottom" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="AmbilWarnaPreference">
-        <attr name="supportsAlpha"
-              format="boolean"/>
-    </declare-styleable>
-
 </resources>

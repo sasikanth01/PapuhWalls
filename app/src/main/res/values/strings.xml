@@ -81,11 +81,11 @@
     <string name="theme_background_theme_title">Background</string>
     <string name="theme_background_theme_summary">Change color of the background</string>
     <string name="theme_primary_text">Primary Text Color</string>
-    <string name="theme_primary_text_summary">Changes the color of the primary text</string>
+    <string name="theme_primary_text_summary">Changes the color of the primary text in the home/credits screen</string>
     <string name="theme_secondary_text">Secondary Text Color</string>
-    <string name="theme_secondary_text_summary">Changes the color of the secondary text</string>
+    <string name="theme_secondary_text_summary">Changes the color of the secondary text in the home/credits screen</string>
     <string name="theme_accent">Accent Color</string>
-    <string name="theme_accent_summary">Changs the accent color</string>
+    <string name="theme_accent_summary">Changs the accent color in the home/credits screen</string>
     <string name="theme_material_drawer_settings">Material Drawer</string>
     <string name="theme_drawer_theme_title">Drawer Background</string>
     <string name="theme_drawer_normal_icon">Drawer Normal Icon</string>
