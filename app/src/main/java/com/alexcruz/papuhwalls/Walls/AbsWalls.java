@@ -27,6 +27,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbsWalls extends Fragment {
 
@@ -37,7 +39,7 @@ public abstract class AbsWalls extends Fragment {
     JSONArray jsonarray;
     GridView mGridView;
     WallsGridAdapter mGridAdapter;
-    ArrayList<HashMap<String, String>> arraylist;
+    List<Map<String, String>> arraylist;
     private ViewGroup root;
     private Context context;
     public static int numColumns;
@@ -102,7 +104,7 @@ public abstract class AbsWalls extends Fragment {
             mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    HashMap<String, String> data = arraylist.get(position);
+                    Map<String, String> data = arraylist.get(position);
                     String wallurl = data.get((WALL));
                     Intent intent = new Intent(context, WallsFragment.class);
                     intent.putExtra("wall", wallurl);
@@ -116,7 +118,7 @@ public abstract class AbsWalls extends Fragment {
                             .titleGravity(GravityEnum.CENTER)
                             .title(R.string.credit_wallpaper)
                             .contentGravity(GravityEnum.CENTER)
-                            .content(WallsGridAdapter.jsondata.get(AbsWalls.AUTHOR))
+                            .content(arraylist.get(position).get(AbsWalls.AUTHOR))
                             .callback(new MaterialDialog.ButtonCallback() {
                             })
                             .show();

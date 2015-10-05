@@ -21,13 +21,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class WallsGridAdapter extends BaseAdapter {
 
-    ArrayList<HashMap<String, String>> data;
+    List<Map<String, String>> data;
     public String wallurl;
     private int numColumns;
-    public static HashMap<String, String> jsondata = new HashMap<String, String>();
+    private Map<String, String> jsondata = new HashMap<>();
 
     private WallsHolder holder;
 
@@ -35,7 +37,7 @@ public class WallsGridAdapter extends BaseAdapter {
     Preferences Preferences;
 
     public WallsGridAdapter(Context context,
-                            ArrayList<HashMap<String, String>> arraylist, int numColumns) {
+                            List<Map<String, String>> arraylist, int numColumns) {
         super();
         this.context = context;
         this.numColumns = numColumns;
