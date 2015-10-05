@@ -121,6 +121,10 @@
     <string name="notify_url">https://goo.gl/fMw0tE</string>
     <string name="pushbullet_subscribe">SUBSCRIBE</string>
     <string name="pushbullet_nothanks">NO THANKS</string>
+    <string name="grid_changer_column_one">1 Column</string>
+    <string name="grid_changer_column_two">2 Columns</string>
+    <string name="grid_changer_column_three">3 Columns</string>
+
 
     <!-- Changelog -->
     <!-- Initial Release -->

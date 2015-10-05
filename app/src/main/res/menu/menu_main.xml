@@ -20,14 +20,14 @@
         <menu>
             <item
                 android:id="@+id/onecolumn"
-                android:title="1 Column"
-                android:icon="@color/transparent" />
+                android:icon="@color/transparent"
+                android:title="@string/grid_changer_column_one" />
             <item
                 android:id="@+id/twocolumn"
-                android:title="2 Columns"/>
+                android:title="@string/grid_changer_column_two" />
             <item
                 android:id="@+id/threecolumn"
-                android:title="3 Columns"/>
+                android:title="@string/grid_changer_column_three" />
         </menu>
     </item>
     <item
