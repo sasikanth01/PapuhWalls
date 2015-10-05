@@ -797,15 +797,15 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case R.id.onecolumn:
                 AbsWalls.numColumns = 1;
-                refresh();
+                refreshGridView();
                 break;
             case R.id.twocolumn:
                 AbsWalls.numColumns = 2;
-                refresh();
+                refreshGridView();
                 break;
             case R.id.threecolumn:
                 AbsWalls.numColumns = 3;
-                refresh();
+                refreshGridView();
                 break;
         }
         return true;
@@ -849,11 +849,14 @@ public class MainActivity extends ActionBarActivity {
                 .show();
     }
 
-    private void refresh () {
-        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                MainActivity.this, MainActivity.class));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+    private void refreshGridView() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main);
+
+        if (fragment instanceof AbsWalls) {
+            ((AbsWalls) fragment).updateGridView();
+        }
+
+
     }
 
     private void showNotConnectedDialog() {

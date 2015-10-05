@@ -107,6 +107,14 @@ public abstract class AbsWalls extends Fragment {
                 }
             });
         }
+
     }
+
+
+    public void updateGridView() {
+        mGridView.setNumColumns(numColumns);
+        mGridView.startLayoutAnimation();
+    }
+
 
 }
