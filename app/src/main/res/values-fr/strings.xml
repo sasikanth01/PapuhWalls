@@ -128,7 +128,7 @@ Laissons-le se reposer !"</string>
     <string name="snackbar_desc">"&lt;b>SnackBar&lt;/b> est semblable aux notifications Toast d\'Android, inspiré des spécifications de la conception Material de Google"</string>
     <string name="submit">Soumettre</string>
     <string name="third_slide_title">Vous n\'aimez le thème de l\'application ?</string>
-    <string name="third_slide_description">Dirigez-vous simplement vers les paramètres et ajustez-le !\n\nVous pouvez modifier l\'apparence de l\'application à votre guise, et en temps réel, avec le sélecteur de couleur intégré !</string>
+    <string name="third_slide_description">Dirigez-vous simplement vers les paramètres et ajustez-le ! Vous pouvez modifier l\'apparence de l\'application à votre guise, et en temps réel, avec le sélecteur de couleur intégré !</string>
     <string name="fourth_slide_title">Vous souhaitez contribuer ?</string>
     <string name="fourth_slide_description">"Toutes les contributions sont acceptées ! Petite ou grande, tout n\'est qu\'une histoire de communauté ! Cette application sera toujours gratuite, et \"Open Source\" !"</string>
     <string name="last_slide_title">C\'est tout !</string>
@@ -251,4 +251,11 @@ Voulez-vous l\'installer ?"</string>
     <string name="v24_line2">- Ajout de l\'en-tête contextuel au tiroir</string>
     <string name="v24_line3">- Ajout de 95 nouveaux fonds d\'écran</string>
     <string name="v24_line4">- Ajout de la traduction française (Merci à Kevin)</string>
+    <!-- Version 2.0.5 -->
+    <string name="v25_line1">- Ajout de diverses personnalisations du thème</string>
+    <string name="v25_line2">- Correctif du fonctionnement entre le bouton d\'action et les fonds d\'écran</string>
+    <string name="v25_line3">- Ajout du redimensionnement de la grille</string>
+    <string name="grid_changer_column_one">1 colonne</string>
+    <string name="grid_changer_column_two">2 colonnes</string>
+    <string name="grid_changer_column_three">3 colonnes</string>
 </resources>
