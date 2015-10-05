@@ -141,6 +141,10 @@
     <string name="v24_line2">- Added time-context headers to material drawer</string>
     <string name="v24_line3">- Added 95 new wallpapers</string>
     <string name="v24_line4">- Added French translations (Thanks Kevin)</string>
+    <!-- Version 2.0.5 -->
+    <string name="v25_line1">- Add more themeing functionality to settings</string>
+    <string name="v25_line2">- Fixes to the way FAB works with wallpaper actions</string>
+    <string name="v25_line3">- Added WIP grid changer</string>
 
     <!---DO NOT TRANSLATE-->
     <!---DO NOT TRANSLATE-->
