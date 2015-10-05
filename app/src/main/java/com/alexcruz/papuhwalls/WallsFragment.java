@@ -280,6 +280,7 @@ public class WallsFragment extends ActionBarActivity {
                         shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                         WallsFragment.this.startActivityForResult(Intent.createChooser(shareIntent, "Share Via"), ACTIVITY_SHARE);
                         fab.collapse();
+
                     }
                 }).execute();
 

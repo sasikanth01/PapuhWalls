@@ -17,12 +17,14 @@
         app:mrl_rippleInAdapter="true"
         app:mrl_rippleOverlay="true">
 
-        <ImageView
+        <com.alexcruz.papuhwalls.SquareImageView
             android:id="@+id/wall"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
             android:scaleType="centerCrop"
-            tools:ignore="ContentDescription" />
+            android:transitionName="image"
+            tools:ignore="ContentDescription,UnusedAttribute" />
 
     </com.balysv.materialripple.MaterialRippleLayout>
 

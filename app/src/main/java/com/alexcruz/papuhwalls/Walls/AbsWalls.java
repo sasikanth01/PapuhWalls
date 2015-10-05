@@ -2,8 +2,12 @@ package com.alexcruz.papuhwalls.Walls;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -28,7 +32,6 @@ import java.util.HashMap;
 
 public abstract class AbsWalls extends Fragment {
 
-    private int mColumnCountPortrait = 2;
     public static String NAME = "name";
     public static String WALL = "wall";
     public static String AUTHOR = "author";
@@ -39,8 +42,7 @@ public abstract class AbsWalls extends Fragment {
     ArrayList<HashMap<String, String>> arraylist;
     private ViewGroup root;
     private Context context;
-    private int mColumnCount;
-    private int numColumns = 2;
+    public static int numColumns;
 
     public abstract int getTitleId();
 
@@ -53,20 +55,13 @@ public abstract class AbsWalls extends Fragment {
 
         context = getActivity();
 
-        ActionBar toolbar = ((ActionBarActivity)context).getSupportActionBar();
+        ActionBar toolbar = ((ActionBarActivity) context).getSupportActionBar();
         toolbar.setTitle(getTitleId());
 
         root = (ViewGroup) inflater.inflate(R.layout.wallpapers, null);
 
-        int newColumnCount = mColumnCountPortrait;
-        if (mColumnCount != newColumnCount) {
-            mColumnCount = newColumnCount;
-            numColumns = mColumnCount;
-        }
-
         new DownloadJSON().execute();
         return root;
-
     }
 
     private class DownloadJSON extends AsyncTask<Void, Void, Void> {

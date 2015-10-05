@@ -14,6 +14,23 @@
         android:title="@string/notify"
         app:showAsAction="always"/>
     <item
+        android:icon="@drawable/ic_gridchanger"
+        app:showAsAction="always"
+        android:title="Grid Changer">
+        <menu>
+            <item
+                android:id="@+id/onecolumn"
+                android:title="1 Column"
+                android:icon="@color/transparent" />
+            <item
+                android:id="@+id/twocolumn"
+                android:title="2 Columns"/>
+            <item
+                android:id="@+id/threecolumn"
+                android:title="3 Columns"/>
+        </menu>
+    </item>
+    <item
         android:id="@+id/clearcache"
         android:orderInCategory="300"
         android:title="@string/clear_cache"

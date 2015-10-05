@@ -1,6 +1,7 @@
 package com.alexcruz.papuhwalls;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,9 +13,11 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.IntentCompat;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.alexcruz.papuhwalls.Walls.AbsWalls;
 import com.github.mrengineer13.snackbar.SnackBar;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -792,6 +796,18 @@ public class MainActivity extends ActionBarActivity {
             case R.id.clearcache:
                 clearApplicationData();
                 break;
+            case R.id.onecolumn:
+                AbsWalls.numColumns = 1;
+                refresh();
+                break;
+            case R.id.twocolumn:
+                AbsWalls.numColumns = 2;
+                refresh();
+                break;
+            case R.id.threecolumn:
+                AbsWalls.numColumns = 3;
+                refresh();
+                break;
         }
         return true;
     }
@@ -832,6 +848,13 @@ public class MainActivity extends ActionBarActivity {
                     }
                 })
                 .show();
+    }
+
+    private void refresh () {
+        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                MainActivity.this, MainActivity.class));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void showNotConnectedDialog() {
