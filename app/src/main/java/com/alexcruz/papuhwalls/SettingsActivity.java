@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.support.v4.content.IntentCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
@@ -17,14 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.alexcruz.papuhwalls.Walls.AbsWalls;
-
 public class SettingsActivity extends PreferenceActivity {
     Toolbar toolbar;
 
     Preferences Preferences;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
-    String ListPreference;
 
     @SuppressWarnings("deprecation")
     @Override
