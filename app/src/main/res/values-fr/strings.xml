@@ -258,4 +258,7 @@ Voulez-vous l\'installer ?"</string>
     <string name="grid_changer_column_one">1 colonne</string>
     <string name="grid_changer_column_two">2 colonnes</string>
     <string name="grid_changer_column_three">3 colonnes</string>
+    <string name="grid_changer_column_four">4 colonnes</string>
+
+    <string name="credit_wallpaper">Contribution</string>
 </resources>
