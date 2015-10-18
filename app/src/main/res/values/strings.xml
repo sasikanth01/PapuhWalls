@@ -296,7 +296,7 @@
         <![CDATA[
         <b>Picasso</b> is a powerful image downloading and caching library for Android.
         ]]></string>
-    <string name="picasso_web">http://square.github.io/picasso/</string>
+    <string name="picasso_web" translatable="false">http://square.github.io/picasso/</string>
 
     <string name="okhttp_author" translatable="false">Square</string>
     <string name="okhttp_name" translatable="false">OkHttp</string>
