@@ -12,7 +12,6 @@
     <string name="section_clouds_walls">Nuvole</string>
     <string name="section_mustaches_walls">Baffi</string>
     <string name="section_original_walls">Sfondi originali</string>
-    <string name="section_papuh_walls">Papuh Swag</string>
     <string name="section_solids_walls">Solidi</string>
     <string name="section_stars_walls">Stelle</string>
     <string name="section_rom_category">ROM CUSTOM</string>
@@ -23,7 +22,7 @@
     <string name="third_slide_title">Non ti piace il tema della app?</string>
     <string name="third_slide_description">Allora apri le impostazioni! Attraverso una serie di opzioni potrai cambiare il look dei vari elementi in tempo reale fino a che non sarai soddisfatto!</string>
     <string name="fourth_slide_title">Vuoi contribuire?</string>
-    <string name="fourth_slide_description">Ogni contributo, grande o piccolo che sia, è ben accetto!\n\nDetto questo, l\'app sarà sempre gratis e open source!</string>
+    <string name="fourth_slide_description">Ogni contributo, grande o piccolo che sia, è ben accetto!\n\nDetto questo, l\'app sarà sempre gratuita e open source!</string>
     <string name="last_slide_title">È tutto!</string>
     <string name="last_slide_description">Goditi l\'app :-)</string>
     <string name="customactivityoncrash_error_activity_error_occurred_explanation">OH CAPPERI!!\n\nAlex deve essersi addormentato nuovamente\nsopra il computer!\nProsegui e faglielo sapere!</string>
@@ -98,7 +97,7 @@
     <string name="v21_line1">- Fixato FC con il menu "pulisci cache"</string>
     <string name="v21_line2">- Fixata navbar Muzei che non veniva tinta</string>
     <!-- Version 2.0.2 -->
-    <string name="v22_line1">- Miglioramenti ai frammenti dello sfondo the wall fragments</string>
+    <string name="v22_line1">- Miglioramenti ai frammenti dello sfondo</string>
     <string name="v22_line2">- Rimossa tab di selezione del profilo dell\'header</string>
     <string name="v22_line3">- 20 nuovi sfondi</string>
     <!-- Version 2.0.3 -->
@@ -182,7 +181,7 @@
     <string name="apache_license">Sotto licenza Apache 2.0.</string>
     <string name="mit_license">Sotto licenza MIT.</string>
 
-    <string name="libs_section_title">Librerie Gratis &amp; Open Source usate:</string>
+    <string name="libs_section_title">Librerie Gratuita &amp; Open Source usate:</string>
 
     <string name="fab_desc">
 		<![CDATA[
