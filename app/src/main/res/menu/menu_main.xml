@@ -17,21 +17,6 @@
         android:icon="@drawable/ic_gridchanger"
         app:showAsAction="always"
         android:title="Grid Changer">
-        <menu>
-            <item
-                android:id="@+id/onecolumn"
-                android:icon="@color/transparent"
-                android:title="@string/grid_changer_column_one" />
-            <item
-                android:id="@+id/twocolumn"
-                android:title="@string/grid_changer_column_two" />
-            <item
-                android:id="@+id/threecolumn"
-                android:title="@string/grid_changer_column_three" />
-            <item
-                android:id="@+id/fourcolumn"
-                android:title="@string/grid_changer_column_four" />
-        </menu>
     </item>
     <item
         android:id="@+id/clearcache"
