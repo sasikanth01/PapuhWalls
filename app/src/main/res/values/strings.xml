@@ -354,4 +354,10 @@
         ]]></string>
     <string name="licensesdialog_web" translatable="false">https://github.com/PSDev/LicensesDialog</string>
 
+    <string-array name="column">
+    	<item>1</item>
+    	<item>2</item>
+    	<item>3</item>
+    </string-array>
+
 </resources>
