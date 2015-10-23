@@ -796,21 +796,8 @@ public class MainActivity extends ActionBarActivity {
             case R.id.clearcache:
                 clearApplicationData();
                 break;
-            case R.id.onecolumn:
-                AbsWalls.numColumns = 1;
-                refreshGridView();
-                break;
-            case R.id.twocolumn:
-                AbsWalls.numColumns = 2;
-                refreshGridView();
-                break;
-            case R.id.threecolumn:
-                AbsWalls.numColumns = 3;
-                refreshGridView();
-                break;
-            case R.id.fourcolumn:
-                AbsWalls.numColumns = 4;
-                refreshGridView();
+            case R.id.grid:
+                showGrid();
                 break;
         }
         return true;
@@ -839,6 +826,27 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .iconRes(R.drawable.ic_notify)
                 .show();
+    }
+
+    private void showGrid() {
+        new MaterialDialog.Builder(this)
+        .title("Grid Count")
+        .items(R.array.column)
+        .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+            @Override
+            public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                
+                AbsWalls.numColumns = which+1;
+                refreshGridView();
+                /**
+                 * If you use alwaysCallSingleChoiceCallback(), which is discussed below,
+                 * returning false here won't allow the newly selected radio button to actually be selected.
+                 **/
+                return true;
+            }
+        })
+        .positiveText("Set")
+        .show();
     }
 
     private void changelog() {
